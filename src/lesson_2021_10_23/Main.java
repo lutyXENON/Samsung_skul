@@ -2,7 +2,12 @@ package lesson_2021_10_23;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, git!");
-        System.out.println("Hello!");
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print(i + "" + j + " ");
+            }
+            System.out.println();
+
+        }
     }
 }
