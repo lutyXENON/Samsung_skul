@@ -1,8 +1,11 @@
-package _main_tasks_;
+package modules.mod1._sec9.base;
 
 import java.util.Scanner;
 
-public class mod1_sec9_base_2 {
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
+public class task2 {
     public static int SumOfDigits(int n) {
         int sum = 0;
         while (n > 0) {
@@ -14,11 +17,11 @@ public class mod1_sec9_base_2 {
 
     public static int SumOfSeven(int a, int b) {
         int sum = 0;
-        for (int i = a; i <= b; i++) {
+        for (int i = max(a, 10); i <= min(b, 99); i++) {
             if (i % 7 == 0)
                 sum += SumOfDigits(i);
         }
-        return (sum);
+        return sum;
     }
 
     public static void main(String[] args) {

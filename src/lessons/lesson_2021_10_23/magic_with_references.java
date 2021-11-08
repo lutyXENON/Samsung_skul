@@ -1,4 +1,4 @@
-package lesson_2021_10_23;
+package lessons.lesson_2021_10_23;
 
 class magic_with_references {
     public static void main(String[] args) {
