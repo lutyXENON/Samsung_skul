@@ -13,7 +13,8 @@ public class task3 {
             }
         }
         for (int i = 0; i < n; i++) {
-            for (int j = n - i - 1; j >= 0; j--) {
+            for (int j = 0; j < n; j++) {
+                if (i + j == n - 1) continue;
                 if (mtr[i][j] != mtr[j][i]) {
                     System.out.println("no");
                     return;
