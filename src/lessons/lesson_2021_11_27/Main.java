@@ -17,7 +17,7 @@ abstract class Bike {
     }
 
     public void printInfo() {
-        System.out.println("Bike's owner: " + owner + ", wheels diameter: " + diameter);
+        System.out.println("Bike with " + getWheelsNum() + " wheels. Bike's owner: " + owner + ", wheels diameter: " + diameter);
     }
 
     abstract byte getWheelsNum();
@@ -91,7 +91,7 @@ class BikeWith3Wheels extends Bike {
 
     @Override
     public void printInfo() {
-        System.out.println("Bike's owner: " + owner + ", wheels diameter: " + diameter + ", type: " + type);
+        System.out.println("Bike with " + getWheelsNum() + " wheels. Bike's owner: " + owner + ", wheels diameter: " + diameter + ", type: " + type);
     }
 
     @Override
@@ -122,15 +122,19 @@ class Workshop {
 
 
 public class Main {
-    public static List<Bike> sortByParam(ArrayList<Bike> list) {
+    public static List<Bike> sortByParam(List<Bike> list) {
         List<Bike> ansList = new ArrayList<>();
         int min;
         ArrayList<Integer> param = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) param.add(list.get(i).diameter);
+        for (Bike bike : list) param.add(bike.diameter);
 
         while (list.size() > 0) {
-            list.indexOf(list.stream().min())
+            int minI = param.indexOf(Collections.min(param));
+            ansList.add(list.get(minI));
+            list.remove(minI);
+            param.remove(minI);
         }
+        return ansList;
     }
 
     public static void main(String[] args) {
@@ -161,6 +165,9 @@ public class Main {
             if (bikes.get(i).getWheelsNum() == 1) Workshop.repair(bikes.get(i));
         }
 
-        bikes.sort(Comparator.comparing(o -> o.diameter));
+        List<Bike> sorted = sortByParam(bikes);
+        for (Bike bike : sorted) {
+            bike.printInfo();
+        }
     }
 }
